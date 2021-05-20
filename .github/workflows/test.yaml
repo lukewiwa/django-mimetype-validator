@@ -1,0 +1,21 @@
+name: tests
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: lukewiwa/pythons:latest
+    env:
+      POETRY_VIRTUALENVS_CREATE: false
+    steps:
+      - uses: actions/checkout@v2
+      - name: install libmagic
+        run: apt-get update && apt-get install --no-install-recommends -y libmagic-dev
+      - name: poetry
+        run: python3.6 -m pip install poetry && poetry install
+      - name: lint
+        run: ./run lint
+      - name: tox
+        if: ${{ success() }}
+        run: tox

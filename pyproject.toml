@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "django-mimetype-validator"
+version = "0.1.0"
+description = ""
+authors = ["lukewiwa <luke.wiwa@gmail.com>"]
+
+[tool.poetry.dependencies]
+Django = "^2.2.23"
+python = "^3.6.2"
+python-magic = "^0.4.22"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.812"
+flake8 = "^3.9.2"
+isort = "^5.8.0"
+black = "^21.5b1"
+tox = "^3.23.1"
+pytest = "^6.2.4"
+tox-poetry-dev-dependencies = "^0.0.9"
+django-stubs = "^1.8.0"
+pytest-django = "^4.3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+cache_dir = "/tmp/.pytest_cache"
+DJANGO_SETTINGS_MODULE = "tests.settings"
