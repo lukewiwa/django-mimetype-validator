@@ -12,8 +12,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: install libmagic
         run: apt-get update && apt-get install --no-install-recommends -y libmagic-dev
+      - name: default python install
+        run: ln -sf /usr/local/bin/python3.6 /usr/local/bin/python && ln -sf /usr/local/bin/pip3.6 /usr/local/bin/pip
       - name: poetry
-        run: python3.6 -m pip install poetry && poetry install
+        run: python -m pip install poetry && poetry install
       - name: lint
         run: ./run lint
       - name: tox
