@@ -9,8 +9,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Poetry
+RUN ln -sf /usr/local/bin/python3.6 /usr/local/bin/python
+RUN ln -sf /usr/local/bin/pip3.6 /usr/local/bin/pip
 ENV POETRY_VIRTUALENVS_CREATE="false"
-RUN python3.6 -m pip install poetry
+RUN python -m pip install poetry
+
 
 # Install project deps
 COPY poetry.lock pyproject.toml /tmp/pip-tmp/
